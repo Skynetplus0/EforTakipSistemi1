@@ -1,0 +1,60 @@
+<div class="container mt-4">
+    <h3>Çalışan Aylık Raporu</h3>
+  
+    <div class="form-group mt-3">
+      <label for="monthPicker">Ay Seç:</label>
+      <input
+        id="monthPicker"
+        type="month"
+        class="form-control"
+        [(ngModel)]="selectedMonth"
+        (change)="onMonthChange()"
+      />
+    </div>
+  
+    <table class="table table-bordered mt-4" *ngIf="report.length > 0">
+      <thead>
+        <tr>
+          <th class="table-header-blue">Ad</th>
+          <th class="table-header-blue">Soyad</th>
+          <th class="table-header-blue">Tarih</th>
+          <th class="table-header-blue">Proje</th>
+          <th class="table-header-blue">Çalışma Saati</th>
+          <th class="table-header-blue">Açıklama</th>
+          <th class="table-header-blue">Kaydet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of report" [attr.data-date]="item.date"  [ngStyle]="isWeekend(item.date) ? {'background-color': '#cc1717'} : {}"   >
+          <td [style.backgroundColor]="isWeekend(item.date) ? '#ffcccc' : ''">{{ item.name }}</td>
+          <td [style.backgroundColor]="isWeekend(item.date) ? '#ffcccc' : ''">{{ item.surname }}</td>
+          <td [style.backgroundColor]="isWeekend(item.date) ? '#ffcccc' : ''">{{ item.date }}</td>
+  
+          <td>
+            <select class="form-control" [(ngModel)]="item.projectName">
+              <option *ngFor="let p of allProjects" [value]="p.name">{{ p.name }}</option>
+            </select>
+          </td>
+  
+          <td>
+            <input
+             type="number"
+             [(ngModel)]="item.hours"
+             [min]="0"
+             [max]="9"
+            class="form-control"
+            (keydown)="restrictHoursInput($event)"
+            />
+          </td>
+  
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="item.description" />
+          </td>
+  
+          <td>
+            <button class="btn btn-success btn-sm" (click)="save(item)">Kaydet</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

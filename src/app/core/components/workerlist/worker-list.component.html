@@ -1,0 +1,20 @@
+<div class="container mt-4">
+    <h3>Çalışanlar</h3>
+  
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>İsim</th>
+          <th>Soyisim</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let worker of filteredWorkers" (click)="goToDetails(worker.id)" style="cursor:pointer">
+          <td>{{ worker.name }}</td>
+          <td>{{ worker.surname }}</td>
+      
+
+        </tr>
+      </tbody>
+    </table>
+  </div>

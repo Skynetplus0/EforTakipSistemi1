@@ -1,0 +1,50 @@
+<div class="container mt-4">
+    <h2>Aylık Rapor</h2>
+  
+    <div class="mb-3">
+      <label for="month">Lütfen istediğiniz Ayı Seçin:</label>
+      <input type="month" class="form-control" id="month" [(ngModel)]="selectedMonth" (change)="onMonthChange()" />
+     
+    </div>
+  
+    <table class="table table-bordered mt-4" *ngIf="reports.length > 0">
+      <thead >
+        <tr>
+          <th class="table-header-blue" >Ad</th>
+          <th class="table-header-blue">Soyad</th>
+          <th class="table-header-blue">Toplam Saat</th>
+          <th class="table-header-blue">Beklenen Saat</th>
+          <th class="table-header-blue">Oran (%)</th>
+          <th class="table-header-blue">Çalıştığı Gün Sayısı</th>
+          <th class="table-header-blue">Projeler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of reports">
+          <td class="table-body-orange">{{ r.name }}</td>
+          <td class="table-body-orange">{{ r.surname }}</td>
+          <td class="table-body-orange">{{ r.totalHours }}</td>
+          <td class="table-body-orange">162</td>
+          <td class="table-body-orange">{{ ((r.totalHours / 162) * 100) | number: '1.0-1' }}</td>
+          <td class="table-body-orange">{{ r.daysWorked }}</td>
+          <td class="table-body-orange">
+            <ul>
+              <li *ngFor="let p of r.projects">{{ p.name }} ({{ p.hours }} saat)</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div style="max-width: 500px; margin: auto" *ngIf="pieLabels.length">
+        <canvas baseChart
+          [data]="{ labels: pieLabels, datasets: [{ data: pieData }] }"
+          [type]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          >
+          
+        </canvas>
+      </div>
+
+  </div>

@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h3>Projeler</h3>
+  
+    <table class="table table-bordered mt-3" *ngIf="projects.length > 0">
+      <thead>
+        <tr>
+          <th class="table-header-blue">Proje Adı</th>
+          <th class="table-header-blue">Aksiyon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td class="table-body-orange">{{ project.name }}</td>
+        
+          <td class="table-body-orange">
+            <button class="btn btn-danger btn-sm" (click)="deleteProject(project.id)">Sil</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="projects.length === 0" class="alert alert-info">
+      Listelenecek proje yok.
+    </div>
+  </div>

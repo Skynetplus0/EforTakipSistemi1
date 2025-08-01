@@ -1,0 +1,42 @@
+<div class="container">
+
+
+<h1 class="mt-3">Add Worker</h1>
+
+<form #form="ngForm" (ngSubmit)="onFormSubmit()" action="">
+
+<div class="mt-2">
+
+    <div class="mt-3">
+        <label class="form-label">Worker Name</label>
+        <input type="text" id="workerName" class="form-control" 
+        name="workerName" [(ngModel)]="model.name" >
+
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Worker Surname</label>
+        <input type="text" id="workerSurname" class="form-control" 
+        name="workerSurname"[(ngModel)]="model.surname"
+        >
+
+    </div>
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+</form>
+
+
+
+</div>

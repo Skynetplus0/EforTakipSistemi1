@@ -1,0 +1,7 @@
+.table-header-blue {
+    background-color: #d4edfa !important;
+  }
+
+  .table-body-orange {
+    background-color: #fff3cd !important; /* Bootstrap’in alert-warning arka plan rengi */
+  }
